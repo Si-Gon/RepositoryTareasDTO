@@ -8,27 +8,6 @@ import jakarta.validation.constraints.FutureOrPresent;
 
 import java.time.LocalDate;
 
-/**
- * DTO (Data Transfer Object) — TareaRequest
- *
- * ¿QUÉ ES UN DTO Y POR QUÉ EXISTE?
- * El DTO es el objeto que viaja entre el cliente y el servidor en el cuerpo
- * del request (POST, PUT). Es DISTINTO al modelo de dominio (Tarea).
- *
- * Razón principal de separarlos:
- * 1. El cliente NO debe poder enviar el "id" cuando crea una tarea — el id
- *    lo asigna el sistema. Si usáramos la clase Tarea directamente, el cliente
- *    podría mandar cualquier id y sobreescribir registros.
- * 2. Las validaciones (@NotBlank, @Size) son reglas del INPUT del usuario,
- *    no del modelo de dominio en sí.
- * 3. Puedes tener distintos DTOs para crear vs actualizar si los campos difieren.
- *
- * CAMBIO vs tu versión:
- * - Tu versión usaba la misma clase Tareas para todo (modelo + request body).
- *   Eso mezcla responsabilidades y es un problema de diseño.
- * - @Positive en Strings fue reemplazado por @Size y @NotBlank (correcto para texto).
- * - @Pattern valida que prioridad solo acepte valores permitidos.
- */
 public class TareaRequest {
 
     @NotBlank(message = "La descripción no puede estar vacía")
@@ -50,7 +29,6 @@ public class TareaRequest {
 
     private boolean completada = false;
 
-    // Constructor vacío necesario para Jackson
     public TareaRequest() {}
 
     public String getDescripcion() { return descripcion; }

@@ -23,55 +23,20 @@
     </properties>
 
     <dependencies>
-
-        <!--
-            spring-boot-starter-web:
-            Incluye Spring MVC (para @RestController, @GetMapping, etc.)
-            y un servidor Tomcat embebido. Es la dependencia principal para REST.
-        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
-
-        <!--
-            spring-boot-starter-validation:
-            Activa Bean Validation (Jakarta Validation).
-            Necesario para que @Valid, @NotBlank, @Size, @Pattern funcionen.
-            Sin esta dependencia, las anotaciones de validación son ignoradas.
-
-            CAMBIO: tu versión no tenía esta dependencia explícita (aunque quizás
-            venía transitivamente por JPA). Aquí la declaramos claramente.
-        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-validation</artifactId>
         </dependency>
-
-        <!--
-            spring-boot-starter-test:
-            Incluye JUnit 5 y MockMvc para las pruebas de los endpoints REST.
-            scope "test" significa que solo se usa al correr los tests,
-            no se incluye en el .jar final de la aplicación.
-        -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
-        <!--
-            NOTA: Se eliminaron las dependencias de tu versión original:
-            - spring-boot-starter-data-jpa  → era para JPA/Hibernate (base de datos)
-            - mysql-connector-j             → era el driver de MySQL
-            - lombok                        → simplifica código pero oculta lo que hace
-
-            La rúbrica pide persistencia en memoria, así que JPA y MySQL
-            no corresponden. Lombok se eliminó para que el código sea explícito
-            y puedas ver exactamente qué hace cada getter/setter.
-        -->
-
-    </dependencies>
+        </dependencies>
 
     <build>
         <plugins>
